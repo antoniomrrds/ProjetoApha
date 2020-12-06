@@ -133,7 +133,7 @@ public class Bebida {
 
 			System.out.print("Digite a data da Venda .......: ");
 			dtVenda = Main.leia.next();
-			System.out.print("Digite a Quantidade do Produto)...................: ");
+			System.out.print("Digite a Quantidade do Produto...................: ");
 			quantidade = Main.leia.nextInt();
 			System.out.print("Digite o Preco Unitario ..................: ");
 			precoUnitario = Main.leia.nextFloat();
@@ -159,7 +159,7 @@ public class Bebida {
 
 	// ************************ ALTERACAO *****************************
 	public void alterar() {
-		String matriculaChave;
+		String codVendaChave;
 		char confirmacao;
 		long posicaoRegistro = 0;
 		byte opcao;
@@ -167,55 +167,62 @@ public class Bebida {
 		do {
 			do {
 				Main.leia.nextLine();
-				System.out.println("\n ***************  ALTERACAO DE ALUNOS  ***************** ");
-				System.out.print("Digite a Matricula do Aluno que deseja alterar( FIM para encerrar ): ");
-				matriculaChave = Main.leia.nextLine();
-				if (matriculaChave.equals("FIM")) {
+				System.out.println("\n ***************  ALTERACAO DE VENDAS  ***************** ");
+				System.out.print("Digite o Codigo da Venda que deseja alterar( FIM para encerrar ): ");
+				codVendaChave = Main.leia.nextLine();
+				if (codVendaChave.equals("FIM")) {
 					break;
 				}
 
-				posicaoRegistro = pesquisarAluno(matriculaChave);
+				posicaoRegistro = pesquisarVenda(codVendaChave);
 				if (posicaoRegistro == -1) {
-					System.out.println("Matricula nao cadastrada no arquivo, digite outro valor\n");
+					System.out.println("Codigo da Venda nao cadastrada no arquivo, digite outro valor\n");
 				}
 			} while (posicaoRegistro == -1);
 
-			if (matriculaChave.equals("FIM")) {
+			if (codVendaChave.equals("FIM")) {
 				break;
 			}
 
 			ativo = 'S';
 
 			do {
-				System.out.println("[ 1 ] Nome do Aluno............: " + nomeAluno);
-				System.out.println("[ 2 ] Data de nascimento ......: " + dtNasc);
-				System.out.println("[ 3 ] Valor da mensalidade.....: " + mensalidade);
-				System.out.println("[ 4 ] sexo do Aluno............: " + sexo);
+				System.out.println("[ 1 ] Nome do Cliente............: " + nomeCliente);
+				System.out.println("[ 2 ] Codigo do Produto ......: " + codProduto);
+				System.out.println("[ 3 ] Data da Venda.....: " + dtVenda);
+				System.out.println("[ 4 ] Quantidade Vendida............: " + quantidade);
+				System.out.println("[ 5 ] Preço Unitario............: " + precoUnitario);
 
 				do {
 					System.out.println(
 							"Digite o numero do campo que deseja alterar (0 para finalizar as alteraÃ§Ãµes): ");
 					opcao = Main.leia.nextByte();
-				} while (opcao < 0 || opcao > 4);
+				} while (opcao < 0 || opcao > 5);
 
 				switch (opcao) {
 				case 1:
 					Main.leia.nextLine();
-					System.out.print("Digite o NOVO NOME do Aluno..................: ");
-					nomeAluno = Main.leia.nextLine();
+					System.out.print("Digite o NOVO NOME do CLIENTE..................: ");
+					nomeCliente = Main.leia.nextLine();
 					break;
 				case 2:
 					Main.leia.nextLine();
-					System.out.print("Digite a NOVA DATA de Nascimento (DD/MM/AAAA): ");
-					dtNasc = Main.leia.nextLine();
+					System.out.print("Digite  o NOVO Codigo do Produto: ");
+					codProduto = Main.leia.nextLine();
 					break;
 				case 3:
-					System.out.print("Digite o NOVO VALOR da mensalidade...........: ");
-					mensalidade = Main.leia.nextFloat();
+					Main.leia.nextLine();
+					System.out.print("Digite a NOVA DATA da VENDA...........: ");
+					dtVenda = Main.leia.nextLine();
 					break;
 				case 4:
-					System.out.print("Digite o NOVO sexo do Aluno (M/F)............: ");
-					sexo = Main.leia.next().charAt(0);
+					System.out.print("Digite a NOVA Quantidade Vendida............: ");
+					quantidade = Main.leia.nextInt();
+					break;
+
+				case 5:
+					System.out.print("Digite O NOVO PREÇO UNITARIO............: ");
+					precoUnitario = Main.leia.nextFloat();
 					break;
 				}
 				System.out.println();
@@ -225,13 +232,13 @@ public class Bebida {
 				System.out.print("\nConfirma a alteracao dos dados (S/N) ? ");
 				confirmacao = Main.leia.next().charAt(0);
 				if (confirmacao == 'S') {
-					desativarAluno(posicaoRegistro);
-					salvarAluno();
+					desativarVenda(posicaoRegistro);
+					salvarVenda();
 					System.out.println("Dados gravados com sucesso !\n");
 				}
 			} while (confirmacao != 'S' && confirmacao != 'N');
 
-		} while (!matricula.equals("FIM"));
+		} while (!codVendaChave.equals("FIM"));
 	}
 
 	// ************************ EXCLUSAO *****************************
