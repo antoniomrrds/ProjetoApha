@@ -1,0 +1,5 @@
+toplogia de rede: estrela, arvore  
+comutaçao: em pacotes
+metodo de acesso ao meio :contençao
+abragencia:rede local 
+modelo computacional:centralizada tiver um servidor

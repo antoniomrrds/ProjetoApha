@@ -121,8 +121,15 @@ public class Bebida {
 
 			ativo = 'S';
 			codVenda = codVendaChave;
-			System.out.print("Digite o nome do Cliente.........................: ");
-			nomeCliente = Main.leia.nextLine();
+
+			do {
+				System.out.print("Digite o nome do Cliente.........................: ");
+				nomeCliente = Main.leia.nextLine();
+				if (nomeCliente.equalsIgnoreCase("")) {
+					System.out.println("Por Favor Digite o NOME do Cliente !!! ");
+				}
+			} while (nomeCliente.equalsIgnoreCase(""));
+
 			System.out.print("Digite o Codigo do Produto .......: ");
 			codProduto = Main.leia.next();
 
@@ -133,11 +140,25 @@ public class Bebida {
 
 			System.out.print("Digite a data da Venda .......: ");
 			dtVenda = Main.leia.next();
-			System.out.print("Digite a Quantidade do Produto...................: ");
-			quantidade = Main.leia.nextInt();
+
+			
+			do {
+				System.out.print("Digite a Quantidade do Produto...................: ");
+				quantidade = Main.leia.nextInt();
+				if (quantidade < 1) {
+					System.out.println("Por Favor Digite o valor acima de 0 !!!");
+				}
+			} while (quantidade < 1);
+			
+			
+			do{
 			System.out.print("Digite o Preco Unitario ..................: ");
 			precoUnitario = Main.leia.nextFloat();
-
+			if (precoUnitario < 1) {
+				System.out.println("Por Favor Digite o valor acima de 0 !!!");
+			}
+			}while (precoUnitario < 1);
+			
 			vlrImpostos = 0; // deverá receber o retorno do metodo calcular
 								// Impostos
 
@@ -202,8 +223,14 @@ public class Bebida {
 				switch (opcao) {
 				case 1:
 					Main.leia.nextLine();
+					do{
 					System.out.print("Digite o NOVO NOME do CLIENTE..................: ");
 					nomeCliente = Main.leia.nextLine();
+					if (nomeCliente.equalsIgnoreCase("")) {
+						System.out.println("Por Favor Digite o NOME do Cliente !!! ");
+					}
+					
+					}while(nomeCliente.equalsIgnoreCase(""));
 					break;
 				case 2:
 					Main.leia.nextLine();
